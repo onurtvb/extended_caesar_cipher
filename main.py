@@ -1,6 +1,7 @@
 from config import CHARACTERS
 from colors import Color
 from time import sleep
+from os import system
 
 
 def title():
@@ -29,12 +30,24 @@ def title():
     print(Color.reset)
 
 def menu():
+    print(Color.cyan + '--------------------------------------------------------------------')
+    print(Color.reset + 'Select options:\n')
+    print(Color.yellow + '1) ' + Color.reset + 'Crypt\n' + Color.yellow + '2) ' + Color.reset + 'Decrypt\n' + Color.yellow + '3) ' + Color.reset + 'Quit\n')
+    choice = input(Color.yellow + '> ' + Color.reset)
+    if not choice.isdecimal():
+        system('cls')
+        menu()
+    else:
+        match int(choice):
+            case 1: crypt()
+            case 2: decrypt()
+            case 3: exit()
+            case _: menu()
+
+def crypt():
     pass
 
-def crypt(phrase:str, key:int):
-    pass
-
-def decrypt(phrase:str, key:int):
+def decrypt():
     pass
 
 def main():
