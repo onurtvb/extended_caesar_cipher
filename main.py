@@ -45,7 +45,30 @@ def menu():
             case _: menu()
 
 def crypt():
-    pass
+    phrase = input('Enter the phrase to crypt: ')
+
+    phrase = phrase.upper()
+
+    for x in phrase:
+        if x not in CHARACTERS:
+            system('cls')
+            print(Color.red + 'Error: Invalid Characters' + Color.reset)
+            crypt() 
+
+    key = input('Enter the key: ')
+    if not key.isdecimal:
+        if int(key) < 1:
+            system('cls')
+            crypt()
+        system('cls')
+        crypt()
+        
+    new_phrase = ''
+    for x in range(len(phrase)):
+        new_phrase += CHARACTERS[CHARACTERS.index(phrase[x])+int(key)]
+    print('Crypted phrase:',new_phrase)
+    menu()
+
 
 def decrypt():
     pass
